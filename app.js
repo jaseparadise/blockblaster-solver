@@ -29,6 +29,10 @@ const PIECES = [
   { id: "Z_v", name: "Z vertical", cells: [[0,1],[1,0],[1,1],[2,0]] },
   { id: "S_h", name: "S horizontal", cells: [[0,1],[0,2],[1,0],[1,1]] },
   { id: "S_v", name: "S vertical", cells: [[0,0],[1,0],[1,1],[2,1]] },
+  { id: "hook4_right", name: "Hook4 right", cells: [[0,0],[1,0],[1,1],[1,2]] },
+  { id: "hook4_left", name: "Hook4 left", cells: [[0,2],[1,0],[1,1],[1,2]] },
+  { id: "hook4_up", name: "Hook4 up", cells: [[0,0],[0,1],[0,2],[1,0]] },
+  { id: "hook4_down", name: "Hook4 down", cells: [[0,2],[1,0],[1,1],[1,2]] },
 
   { id: "line5_h", name: "5-line horizontal", cells: [[0,0],[0,1],[0,2],[0,3],[0,4]] },
   { id: "line5_v", name: "5-line vertical", cells: [[0,0],[1,0],[2,0],[3,0],[4,0]] },
