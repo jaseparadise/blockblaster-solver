@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#111827" />
+  <meta name="description" content="Block Blast solver PWA for Android: upload a screenshot, set the board and pieces, and get the best move sequence." />
+  <title>Blast Solver</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Android-first Block Puzzle Solver</p>
+        <h1>Blast Solver</h1>
+        <p class="subcopy">Upload a screenshot, mark the current board, choose the 3 available pieces, and compute the best sequence of moves.</p>
+      </div>
+      <button id="installBtn" class="secondary hidden">Install app</button>
+    </header>
+
+    <main class="grid-layout">
+      <section class="card screenshot-card">
+        <div class="card-head">
+          <h2>1. Screenshot</h2>
+          <span class="pill">Optional</span>
+        </div>
+        <label class="upload-box">
+          <input type="file" id="screenshotInput" accept="image/*" />
+          <span>Tap to upload screenshot</span>
+          <small>On Samsung: take a screenshot in game, then upload it here.</small>
+        </label>
+        <div id="screenshotWrap" class="screenshot-wrap hidden">
+          <img id="screenshotPreview" alt="Uploaded screenshot preview" />
+        </div>
+        <p class="helper">This MVP uses the screenshot as a reference. The board and pieces are entered in the controls below.</p>
+      </section>
+
+      <section class="card board-card">
+        <div class="card-head">
+          <h2>2. Current board</h2>
+          <div class="card-actions">
+            <button id="clearBoardBtn" class="secondary">Clear</button>
+            <button id="invertBoardBtn" class="secondary">Invert</button>
+          </div>
+        </div>
+        <p class="helper">Tap cells to mark them as already filled on the 8×8 board. After solving, the best three moves appear here with different colored outlines.</p>
+        <div id="boardGrid" class="board-grid" aria-label="Current board editor"></div>
+        <div class="stats-row">
+          <div class="stat"><span>Filled cells</span><strong id="filledCount">0</strong></div>
+          <div class="stat"><span>Empty cells</span><strong id="emptyCount">64</strong></div>
+        </div>
+      </section>
+
+      <section class="card pieces-card">
+        <div class="card-head">
+          <h2>3. Available pieces</h2>
+          <button id="resetPiecesBtn" class="secondary">Reset pieces</button>
+        </div>
+        <p class="helper">Choose the exact 3 pieces currently shown in the game.</p>
+        <div id="piecesArea" class="pieces-area"></div>
+      </section>
+
+      <section class="card solve-card">
+        <div class="card-head">
+          <h2>4. Solve</h2>
+          <span class="pill accent">Exact search on current 3 pieces</span>
+        </div>
+        <div class="solve-actions">
+          <button id="solveBtn" class="primary">Find best moves</button>
+                  </div>
+        <div id="statusBox" class="status-box">Ready.</div>
+        <div id="resultBox" class="result-box hidden"></div>
+      </section>
+
+      <section class="card analysis-card">
+        <div class="card-head">
+          <h2>Solver notes</h2>
+        </div>
+        <ul>
+          <li>If a piece does not fit immediately, the solver tries using the other pieces first to create space.</li>
+          <li>It evaluates every order of the 3 pieces and every legal placement sequence.</li>
+          <li>When several sequences are legal, it favors more clears, fewer remaining blocks, fewer holes, and better future flexibility.</li>
+          <li>This version is fully usable for solving. Automatic screenshot recognition is the next upgrade.</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <template id="pieceSelectorTemplate">
+    <div class="piece-slot">
+      <div class="piece-slot-head">
+        <h3></h3>
+        <button class="secondary random-piece-btn" type="button">Random</button>
+      </div>
+      <select class="piece-select"></select>
+      <div class="piece-preview"></div>
+    </div>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
