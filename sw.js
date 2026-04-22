@@ -1,4 +1,4 @@
-const CACHE_NAME = 'blast-solver-v1';
+const CACHE_NAME = 'blast-solver-v5';
 const ASSETS = ['./', './index.html', './styles.css', './app.js', './manifest.json', './icon-192.png', './icon-512.png'];
 
 self.addEventListener('install', (event) => {

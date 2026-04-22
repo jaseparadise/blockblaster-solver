@@ -37,3 +37,9 @@ Open the folder and start Live Server.
 ## Suggested next version
 - Replace manual board entry with automatic board/piece detection from screenshot
 - Add native Android wrapper and MediaProjection capture flow
+
+
+## New in v5
+
+- Automatically reads the board and the 3 current pieces from an uploaded screenshot.
+- You can still correct any detection manually before solving.
